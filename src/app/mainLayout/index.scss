@@ -1,0 +1,13 @@
+.main-layout {
+  &__page {
+    display: flex;
+  }
+
+  &__content {
+    height: calc(100vh - 64px);
+  }
+
+  .MuiPaper-elevation4 {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  }
+}

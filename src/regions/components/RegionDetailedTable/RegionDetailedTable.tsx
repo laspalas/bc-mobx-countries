@@ -8,30 +8,32 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import { Link } from "react-router-dom";
 
-import Region from "../../types/Region";
 import "./index.scss";
+import Country from "../../../countries/types/Country";
 
 interface RegionsTableProps {
-  regions: Array<Region>;
+  countries: Array<Country>;
 }
 
-const RegionsTable: FC<RegionsTableProps> = ({ regions }) => {
+const RegionDetailedTable: FC<RegionsTableProps> = ({ countries }) => {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="regions">
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>Code</TableCell>
+            <TableCell>Alpha3Code</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {regions.map(({ code, label }: Region) => (
-            <TableRow key={code}>
+          {countries.map((country: Country) => (
+            <TableRow key={country.alpha3Code}>
               <TableCell component="th" scope="row">
-                <Link to={{ pathname: `/region/${code}` }}>{label}</Link>
+                <Link to={`/countries/${country.alpha3Code.toLowerCase()}`}>
+                  {country.name}
+                </Link>
               </TableCell>
-              <TableCell align="left">{code}</TableCell>
+              <TableCell align="left">{country.alpha3Code}</TableCell>
             </TableRow>
           ))}
         </TableBody>
@@ -40,4 +42,4 @@ const RegionsTable: FC<RegionsTableProps> = ({ regions }) => {
   );
 };
 
-export default RegionsTable;
+export default RegionDetailedTable;

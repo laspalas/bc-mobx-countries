@@ -10,7 +10,7 @@ const regions = [
   { label: "ASEAN (Association of Southeast Asian Nations)", code: "asean" },
   { label: "CAIS (Central American Integration System)", code: "cais" },
   { label: "CEFTA (Central European Free Trade Agreement)", code: "cefta" },
-  { label: "NAFTA (North American Free Trade Agreement)", code: "nafra" },
+  { label: "NAFTA (North American Free Trade Agreement)", code: "nafta" },
   {
     label: "SAARC (South Asian Association for Regional Cooperation)",
     code: "saarc"

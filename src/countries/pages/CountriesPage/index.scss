@@ -1,0 +1,8 @@
+.main-layout {
+  &__inputs {
+    display: flex;
+    width: 500px;
+    justify-content: space-between;
+    padding-bottom: 24px;
+  }
+}

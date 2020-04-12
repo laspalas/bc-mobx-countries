@@ -1,6 +1,6 @@
-import RegionStore from "../../regions/store";
-import regions from "../../mocks/regions";
+import RegionStore from "../../regions/store/RegionStore";
 import CountriesStore from "../../countries/store/CountriesStore";
+import regions from "../../mocks/regions";
 
 class RootStore {
   regionsStore: RegionStore = new RegionStore(regions);

@@ -13,7 +13,6 @@ import Country from "../../types/Country";
 
 interface RegionsTableProps {
   country: Country;
-  countries: Array<Country>;
 }
 
 const RegionDetailedTable: FC<RegionsTableProps> = ({ country }) => {

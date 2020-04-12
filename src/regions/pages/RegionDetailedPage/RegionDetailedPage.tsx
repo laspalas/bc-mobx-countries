@@ -5,7 +5,7 @@ import useStore from "../../../app/storeContext/storesContext";
 
 import MainLayout from "../../../app/mainLayout";
 import "./index.scss";
-import RegionDetailedTable from "../../components/RegionDetailedTable";
+import CountriesTable from "../../../countries/components/CountriesTable";
 
 interface RegionDetailedProps {
   id: string;
@@ -23,9 +23,7 @@ const RegionDetailedPage: FC<RouteComponentProps<RegionDetailedProps>> = ({
 
   return (
     <MainLayout>
-      <RegionDetailedTable
-        countries={rootStore.regionsStore.countriesByRegion}
-      />
+      <CountriesTable countries={rootStore.regionsStore.countriesByRegion} />
     </MainLayout>
   );
 };

@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import InputLabel from "@material-ui/core/InputLabel";
 
 import "./index.scss";
 
@@ -10,45 +11,50 @@ import useStore from "../../../app/storeContext/storesContext";
 import MainLayout from "../../../app/mainLayout";
 import CountriesTable from "../../../countries/components/CountriesTable";
 import Country from "../../types/Country";
+import { FormControl } from "@material-ui/core";
 
 const RegionsPage: FC = () => {
   const { rootStore } = useStore();
   const [nameValue, setSearchValue] = useState("");
   const [borderValue, setBorderCountry] = useState("");
 
-  useEffect(() => {
-    rootStore.countriesStore.getAllCountries();
-  }, [rootStore.countriesStore]);
-
-  console.log(borderValue, nameValue);
-
   return (
     <MainLayout>
-      <div style={{ display: "flex" }}>
-        <TextField
-          value={nameValue}
-          type="search"
-          style={{ margin: "0 20px 20px 0" }}
-          placeholder="Serach by name"
-          onChange={e => setSearchValue(e.target.value)}
-        ></TextField>
-        <Select
-          value={borderValue}
-          type="search"
-          style={{ margin: "0 20px 20px 0" }}
-          placeholder="Serach by border"
-          onChange={e => setBorderCountry(e.target.value as string)}
-        >
-          {rootStore.countriesStore.countries.map(
-            ({ name, alpha3Code }: Country) => {
-              return (
-                <MenuItem key={alpha3Code} value={alpha3Code}>
-                  {name}
-                </MenuItem>
-              );
-            }
-          )}
-        </Select>
+      <div
+        style={{
+          display: "flex",
+          width: "500px",
+          justifyContent: "space-between",
+          paddingBottom: "24px"
+        }}
+      >
+        <FormControl>
+          <TextField
+            label="Search by name"
+            value={nameValue}
+            onChange={e => setSearchValue(e.target.value)}
+          ></TextField>
+        </FormControl>
+        <FormControl style={{ width: "200px" }}>
+          <InputLabel id="select-border">Search by border</InputLabel>
+          <Select
+            value={borderValue}
+            type="search"
+            labelId="select-border"
+            placeholder="Search by border"
+            onChange={e => setBorderCountry(e.target.value as string)}
+          >
+            {rootStore.countriesStore.countries.map(
+              ({ name, alpha3Code }: Country) => {
+                return (
+                  <MenuItem key={alpha3Code} value={alpha3Code}>
+                    {name}
+                  </MenuItem>
+                );
+              }
+            )}
+          </Select>
+        </FormControl>
       </div>
       <CountriesTable
         countries={rootStore.countriesStore.filteredCountries(
